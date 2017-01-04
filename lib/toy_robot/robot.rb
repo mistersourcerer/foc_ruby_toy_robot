@@ -29,6 +29,16 @@ module ToyRobot
 
     def right
       raise NeedToBeInPlace.new unless @placed
+
+      if @facing == :north
+        @facing = :east
+      elsif @facing == :east
+        @facing = :south
+      elsif @facing == :south
+        @facing = :west
+      elsif @facing == :west
+        @facing = :north
+      end
     end
 
     def move
