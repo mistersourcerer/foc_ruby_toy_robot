@@ -17,7 +17,7 @@ describe ToyRobot::Directions do
   end
 
   describe ToyRobot::Directions::North do
-    subject(:north) { described_class.new }
+    subject(:north) { described_class.instance }
 
     it "knows which direction is at 90º left" do
       expect(north.left).to be_a ToyRobot::Directions::West
@@ -29,7 +29,7 @@ describe ToyRobot::Directions do
   end
 
   describe ToyRobot::Directions::West do
-    subject(:west) { described_class.new }
+    subject(:west) { described_class.instance }
 
     it "knows which direction is at 90º left" do
       expect(west.left).to be_a ToyRobot::Directions::South
@@ -41,7 +41,7 @@ describe ToyRobot::Directions do
   end
 
   describe ToyRobot::Directions::South do
-    subject(:south) { described_class.new }
+    subject(:south) { described_class.instance }
 
     it "knows which direction is at 90º left" do
       expect(south.left).to be_a ToyRobot::Directions::East
@@ -53,7 +53,7 @@ describe ToyRobot::Directions do
   end
 
   describe ToyRobot::Directions::East do
-    subject(:east) { described_class.new }
+    subject(:east) { described_class.instance }
 
     it "knows which direction is at 90º left" do
       expect(east.left).to be_a ToyRobot::Directions::North
