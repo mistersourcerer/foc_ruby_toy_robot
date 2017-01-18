@@ -19,48 +19,101 @@ describe ToyRobot::Directions do
   describe ToyRobot::Directions::North do
     subject(:north) { described_class.instance }
 
-    it "knows which direction is at 90º left" do
-      expect(north.left).to be_a ToyRobot::Directions::West
+    describe "#left" do
+      it "knows which direction is at 90º left" do
+        expect(north.left).to be_a ToyRobot::Directions::West
+      end
     end
 
-    it "knows which direction is at 90º right" do
-      expect(north.right).to be_a ToyRobot::Directions::East
+    describe "#right" do
+      it "knows which direction is at 90º right" do
+        expect(north.right).to be_a ToyRobot::Directions::East
+      end
+    end
+
+    describe "#forward" do
+      it "knows to move one step forward given a Coordinate" do
+        coord_0x0 = ToyRobot::Coordinate.new 0, 0
+        new_coord = north.forward(coord_0x0)
+
+        expect(new_coord.x).to eq(0)
+        expect(new_coord.y).to eq(1)
+      end
     end
   end
 
   describe ToyRobot::Directions::West do
     subject(:west) { described_class.instance }
 
-    it "knows which direction is at 90º left" do
-      expect(west.left).to be_a ToyRobot::Directions::South
+    describe "#left" do
+      it "knows which direction is at 90º left" do
+        expect(west.left).to be_a ToyRobot::Directions::South
+      end
     end
 
-    it "know which direction is at 90º right" do
-      expect(west.right).to be_a ToyRobot::Directions::North
+    describe "#right" do
+      it "knows which direction is at 90º right" do
+        expect(west.right).to be_a ToyRobot::Directions::North
+      end
+    end
+
+    describe "forward" do
+      it "knows to move one step forward given a Coordinate" do
+        new_coord = west.forward ToyRobot::Coordinate.new 1, 0
+
+        expect(new_coord.x).to eq(0)
+        expect(new_coord.y).to eq(0)
+      end
     end
   end
 
   describe ToyRobot::Directions::South do
     subject(:south) { described_class.instance }
 
-    it "knows which direction is at 90º left" do
-      expect(south.left).to be_a ToyRobot::Directions::East
+    describe "#left" do
+      it "knows which direction is at 90º left" do
+        expect(south.left).to be_a ToyRobot::Directions::East
+      end
     end
 
-    it "knows which direction is at 90º right"do
-      expect(south.right).to be_a ToyRobot::Directions::West
+    describe "#right" do
+      it "knows which direction is at 90º right"do
+        expect(south.right).to be_a ToyRobot::Directions::West
+      end
+    end
+
+    describe "#forward" do
+      it "knows to move one step forward given a Coordinate" do
+        new_coord = south.forward ToyRobot::Coordinate.new 0, 1
+
+        expect(new_coord.x).to eq(0)
+        expect(new_coord.y).to eq(0)
+      end
     end
   end
 
   describe ToyRobot::Directions::East do
     subject(:east) { described_class.instance }
 
-    it "knows which direction is at 90º left" do
-      expect(east.left).to be_a ToyRobot::Directions::North
+    describe "#left" do
+      it "knows which direction is at 90º left" do
+        expect(east.left).to be_a ToyRobot::Directions::North
+      end
     end
 
-    it "knows which direction is at 90º right" do
-      expect(east.right).to be_a ToyRobot::Directions::South
+    describe "#right" do
+      it "knows which direction is at 90º right" do
+        expect(east.right).to be_a ToyRobot::Directions::South
+      end
+    end
+
+    describe "#forward" do
+      it "knows to move one step forward given a Coordinate" do
+        new_coord = east.forward ToyRobot::Coordinate.new 0, 0
+
+        expect(new_coord.x).to eq(1)
+        expect(new_coord.y).to eq(0)
+      end
     end
   end
 end

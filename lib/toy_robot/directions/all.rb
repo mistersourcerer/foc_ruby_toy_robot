@@ -13,6 +13,10 @@ module ToyRobot
         East.instance
       end
 
+      def forward(coord)
+        Coordinate.new coord.x, coord.y + 1
+      end
+
       def to_s
         "NORTH"
       end
@@ -31,6 +35,10 @@ module ToyRobot
 
       def right
         North.instance
+      end
+
+      def forward(coordinate)
+        Coordinate.new coordinate.x - 1, coordinate.y
       end
 
       def to_s
@@ -53,6 +61,10 @@ module ToyRobot
         South.instance
       end
 
+      def forward(coordinate)
+        Coordinate.new coordinate.x + 1, coordinate.y
+      end
+
       def to_s
         "EAST"
       end
@@ -71,6 +83,10 @@ module ToyRobot
 
       def right
         West.instance
+      end
+
+      def forward(coordinate)
+        Coordinate.new coordinate.x, coordinate.y - 1
       end
 
       def to_s
