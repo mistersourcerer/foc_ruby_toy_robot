@@ -57,11 +57,41 @@ RSpec.describe ToyRobot::Robot do
     end
 
     it "moves robot one unit when facing west" do
-      direction = ToyRobot::Coordinate.new(4, 4)
-      robot.place ToyRobot::Position.new(direction, :west)
+      coordinate = ToyRobot::Coordinate.new(4, 4)
+      robot.place ToyRobot::Position.new(coordinate, :west)
       robot.move
 
       expect(robot.report).to eq "3,4,WEST"
+    end
+
+    context "when movement will drop the robot from the table" do
+      it "refuses to move to SOUTH when on the 0,0 (limit) position" do
+        coordinate = ToyRobot::Coordinate.new(2, 0)
+        robot.place ToyRobot::Position.new(coordinate, :south)
+
+        expect { robot.move }.to raise_error(ToyRobot::OutOfLimits)
+      end
+
+      it "refuses to move to WEST when on the 0,0 (limit) position" do
+        coordinate = ToyRobot::Coordinate.new(0, 2)
+        robot.place ToyRobot::Position.new(coordinate, :west)
+
+        expect { robot.move }.to raise_error(ToyRobot::OutOfLimits)
+      end
+
+      it "refuses to move to NORTH when on the 0,0 (limit) position" do
+        coordinate = ToyRobot::Coordinate.new(0, 4)
+        robot.place ToyRobot::Position.new(coordinate, :north)
+
+        expect { robot.move }.to raise_error(ToyRobot::OutOfLimits)
+      end
+
+      it "refuses to move to EAST when on the 0,0 (limit) position" do
+        coordinate = ToyRobot::Coordinate.new(4, 0)
+        robot.place ToyRobot::Position.new(coordinate, :east)
+
+        expect { robot.move }.to raise_error(ToyRobot::OutOfLimits)
+      end
     end
   end
 
