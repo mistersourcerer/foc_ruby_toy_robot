@@ -13,5 +13,9 @@ module ToyRobot
     def forward
       Position.new @direction.forward(@coordinate), @direction
     end
+
+    def to_s
+      "#{@coordinate},#{@direction}"
+    end
   end
 end
