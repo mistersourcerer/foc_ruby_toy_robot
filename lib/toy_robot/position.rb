@@ -7,7 +7,7 @@ module ToyRobot
 
     def initialize(coordinate, direction)
       @coordinate = coordinate
-      @direction = ToyRobot::Directions[direction]
+      @direction = ToyRobot::Directions[direction.to_sym]
     end
 
     def forward

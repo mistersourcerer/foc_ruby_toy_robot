@@ -21,6 +21,10 @@ module ToyRobot
         "NORTH"
       end
 
+      def to_sym
+        :north
+      end
+
       def ==(other)
         other == :north || other.is_a?(self.class)
       end
@@ -43,6 +47,10 @@ module ToyRobot
 
       def to_s
         "WEST"
+      end
+
+      def to_sym
+        :west
       end
 
       def ==(other)
@@ -69,6 +77,10 @@ module ToyRobot
         "EAST"
       end
 
+      def to_sym
+        :east
+      end
+
       def ==(other)
         other == :east || other.is_a?(self.class)
       end
@@ -91,6 +103,10 @@ module ToyRobot
 
       def to_s
         "SOUTH"
+      end
+
+      def to_sym
+        :south
       end
 
       def ==(other)
