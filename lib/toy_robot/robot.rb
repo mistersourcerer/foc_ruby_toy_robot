@@ -15,13 +15,12 @@ module ToyRobot
   class Robot
     # Public: Used to place the robot on the table in the given position.
     #
-    # x       - An Integer representing the x coordinate.
-    # y       - An Integer representing the y coordinate.
-    # facing  - A Symbol with the direction the robot is facing.
+    # position - A Position to define the current position and facing direction
+    # of a robot.
     #
     # Examples
     #
-    #   robot.place 2, 2, :north
+    #   robot.place Position.new(Direction.new(2, 2), :north)
     #
     # Returns nothing.
     def place(position)
@@ -30,20 +29,52 @@ module ToyRobot
     end
 
     # Public: Used to show the client where the Toy Robot is right now.
+    #
+    # Returns a String with the current position.
     def report
       @position.to_s
     end
 
+    # Public: Used to turn the robot 90º to the left (facing `Direction`).
+    #
+    # Examples
+    #
+    #     robot.place Position.new(Direction.new(2, 2), :north)
+    #     robot.left
+    #     robot.position
+    #     # => 2,2,WEST
+    #
+    # Returns nothing.
     def left
       raise NeedToBeInPlace.new unless @placed
       @position = @position.left
     end
 
+    # Public: Used to turn the robot 90º to the right (facing `Direction`).
+    #
+    # Examples
+    #
+    #     robot.place Position.new(Direction.new(2, 2), :north)
+    #     robot.right
+    #     robot.position
+    #     # => 2,2,EAST
+    #
+    # Returns nothing.
     def right
       raise NeedToBeInPlace.new unless @placed
       @position = @position.right
     end
 
+    # Public: Moves the robot one position in the current facing direction.
+    #
+    # Examples
+    #
+    #     robot.place Position.new(Direction.new(2, 2), :north)
+    #     robot.move
+    #     robot.position
+    #     # => 2,3,NORTH
+    #
+    # Returns nothing.
     def move
       raise NeedToBeInPlace.new unless @placed
       @position = @position.forward
