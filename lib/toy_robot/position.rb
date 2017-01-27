@@ -14,6 +14,14 @@ module ToyRobot
       Position.new @direction.forward(@coordinate), @direction
     end
 
+    def left
+      Position.new @coordinate, @direction.left
+    end
+
+    def right
+      Position.new @coordinate, @direction.right
+    end
+
     def to_s
       "#{@coordinate},#{@direction}"
     end

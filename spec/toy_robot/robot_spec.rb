@@ -3,7 +3,8 @@ RSpec.describe ToyRobot::Robot do
 
   describe "#place" do
     it "places the robot on the table" do
-      robot.place 0, 0, :south
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :south)
 
       expect(robot.report).to eq "0,0,SOUTH"
     end
@@ -19,7 +20,8 @@ RSpec.describe ToyRobot::Robot do
 
   context "It is placed" do
     before do
-      robot.place 0, 0, :north
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :north)
     end
 
     it "allows to move it" do
@@ -31,28 +33,32 @@ RSpec.describe ToyRobot::Robot do
 
   describe "#move" do
     it "moves robot one unit when facing north" do
-      robot.place 0, 0, :north
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :north)
       robot.move
 
       expect(robot.report).to eq "0,1,NORTH"
     end
 
     it "moves robot one unit when facing east" do
-      robot.place 0, 0, :east
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :east)
       robot.move
 
       expect(robot.report).to eq "1,0,EAST"
     end
 
     it "moves robot one unit when facing south" do
-      robot.place 0, 4, :south
+      direction = ToyRobot::Coordinate.new(0, 4)
+      robot.place ToyRobot::Position.new(direction, :south)
       robot.move
 
       expect(robot.report).to eq "0,3,SOUTH"
     end
 
     it "moves robot one unit when facing west" do
-      robot.place 4, 4, :west
+      direction = ToyRobot::Coordinate.new(4, 4)
+      robot.place ToyRobot::Position.new(direction, :west)
       robot.move
 
       expect(robot.report).to eq "3,4,WEST"
@@ -61,28 +67,32 @@ RSpec.describe ToyRobot::Robot do
 
   describe "#left" do
     it "faces west, when facing north" do
-      robot.place 0, 0, :north
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :north)
       robot.left
 
       expect(robot.report).to eq "0,0,WEST"
     end
 
     it "faces south, when facing west" do
-      robot.place 0, 0, :west
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :west)
       robot.left
 
       expect(robot.report).to eq "0,0,SOUTH"
     end
 
     it "faces east, when facing south" do
-      robot.place 0, 0, :south
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :south)
       robot.left
 
       expect(robot.report).to eq "0,0,EAST"
     end
 
     it "faces north, when facing east" do
-      robot.place 0, 0, :east
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :east)
       robot.left
 
       expect(robot.report).to eq "0,0,NORTH"
@@ -91,28 +101,32 @@ RSpec.describe ToyRobot::Robot do
 
   describe "#right" do
     it "faces east, when facing north" do
-      robot.place 0, 0, :north
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :north)
       robot.right
 
       expect(robot.report).to eq  "0,0,EAST"
     end
 
     it "faces south, when facing east" do
-      robot.place 0, 0, :east
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :east)
       robot.right
 
       expect(robot.report).to eq "0,0,SOUTH"
     end
 
     it "faces west, when facing south" do
-      robot.place 0, 0, :south
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :south)
       robot.right
 
       expect(robot.report).to eq "0,0,WEST"
     end
 
     it "faces north, when facing west" do
-      robot.place 0, 0, :west
+      direction = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(direction, :west)
       robot.right
 
       expect(robot.report).to eq "0,0,NORTH"
