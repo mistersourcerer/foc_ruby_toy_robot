@@ -3,10 +3,17 @@ RSpec.describe ToyRobot::Robot do
 
   describe "#place" do
     it "places the robot on the table" do
-      direction = ToyRobot::Coordinate.new(0, 0)
-      robot.place ToyRobot::Position.new(direction, :south)
+      coordinates = ToyRobot::Coordinate.new(0, 0)
+      robot.place ToyRobot::Position.new(coordinates, :south)
 
       expect(robot.report).to eq "0,0,SOUTH"
+    end
+
+    it "refuses to be placed outside the table (outside x/y axis limits)" do
+      coordinates = ToyRobot::Coordinate.new(5, 0)
+      position = ToyRobot::Position.new(coordinates, :north)
+
+      expect { robot.place(position) }.to raise_error ToyRobot::OutOfLimits
     end
   end
 
