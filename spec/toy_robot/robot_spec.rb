@@ -93,6 +93,16 @@ RSpec.describe ToyRobot::Robot do
         expect { robot.move }.to raise_error(ToyRobot::OutOfLimits)
       end
     end
+
+    context "when table has different size limits on x and y" do
+      it "knows that it can move until the current axis/direction limit" do
+        robot = ToyRobot::Robot.new([5, 3])
+        coordinate = ToyRobot::Coordinate.new(3, 0)
+        robot.place ToyRobot::Position.new(coordinate, :north)
+
+        expect { robot.move }.to_not raise_error
+      end
+    end
   end
 
   describe "#left" do

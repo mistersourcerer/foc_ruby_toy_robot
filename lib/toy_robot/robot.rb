@@ -94,7 +94,7 @@ module ToyRobot
 
     def outside_limits?(position)
       (position.y < 0 || position.x < 0) ||
-        (position.y >= @table[0] || position.x >= @table[1])
+        (position.x >= @table[0] || position.y >= @table[1])
     end
   end
 end
