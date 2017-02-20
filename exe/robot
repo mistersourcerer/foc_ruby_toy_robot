@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require "toy_robot"
+require "toy_robot/cli"
+
+cli = ToyRobot::CLI.new
+cli.run
