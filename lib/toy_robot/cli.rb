@@ -1,7 +1,8 @@
 module ToyRobot
   class CLI
     def run
-      gets
+      while command = gets
+      end
     end
   end
 end
