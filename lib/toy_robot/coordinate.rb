@@ -3,8 +3,8 @@ module ToyRobot
     attr_reader :x, :y
 
     def initialize(x, y)
-      @x = x
-      @y = y
+      @x = Integer(x)
+      @y = Integer(y)
     end
 
     def to_s
