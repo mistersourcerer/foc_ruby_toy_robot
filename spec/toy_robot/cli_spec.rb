@@ -1,7 +1,17 @@
 require "toy_robot/cli"
 
 RSpec.describe ToyRobot::CLI do
-  subject(:cli) { described_class.new }
+  let(:quit) do
+    ToyRobot::Command::Quit.new.tap do |quit|
+      allow(quit).to receive(:exit).with(0)
+    end
+  end
+
+  let(:registry) do
+    ToyRobot::Command::Registry.new.tap { |registry| registry.add quit }
+  end
+
+  subject(:cli) { described_class.new(registry: registry) }
 
   describe "#run" do
     it "waits for input from user" do
@@ -19,7 +29,7 @@ RSpec.describe ToyRobot::CLI do
 
     it "knows how to handle a `QUIT` command (exit the execution)" do
       allow(cli).to receive(:gets).and_return("QUIT", nil)
-      expect(cli).to receive(:exit).with(0)
+      expect(quit).to receive(:exit).with(0)
 
       cli.run
     end
