@@ -11,26 +11,6 @@ describe ToyRobot::Command::Registry do
         expect(registry.from "XPTO").to respond_to(:perform)
       end
     end
-
-    context "PLACE X,Y,F" do
-      it "knows how to construct a command place from 'PLACE X,Y,F' parameter" do
-        command = registry.from "PLACE 2,2,NORTH"
-
-        expect(command).to be_a ToyRobot::Command::Place
-      end
-
-      it "knows how to construct a command place from 'PLACE X,Y,F' parameter" do
-        robot = ToyRobot::Robot.new
-        command = registry.from "PLACE 2,2,NORTH"
-        command.perform robot
-
-        expect(robot.report).to eq "2,2,NORTH"
-      end
-    end
-
-    it "knows the REPORT command" do
-      expect(registry.from("REPORT")).to be_a ToyRobot::Command::Report
-    end
   end
 
   describe "#add" do

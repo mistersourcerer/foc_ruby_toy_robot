@@ -11,22 +11,21 @@ module ToyRobot
     end
 
     class Registry
-      def initialize
-        @commands = [
-          Command::Place.new,
-          Command::Report.new
-        ]
-      end
-
       def from(command_string)
         command_name, command_args = command_string.chomp.split " "
-        @commands.find(->{ NullCommand.new } ) { |command|
+        commands.find(->{ NullCommand.new } ) { |command|
           command.recognize?(command_name)
         }.configure command_args
       end
 
       def add(command)
-        @commands << command
+        commands << command
+      end
+
+      private
+
+      def commands
+        @commands ||= []
       end
     end
   end

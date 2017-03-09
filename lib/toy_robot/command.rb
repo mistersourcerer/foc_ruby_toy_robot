@@ -5,6 +5,7 @@ require "toy_robot/command/left.rb"
 require "toy_robot/command/right.rb"
 require "toy_robot/command/quit.rb"
 require "toy_robot/command/registry.rb"
+require "toy_robot/command/cli_registry.rb"
 
 module ToyRobot
   module Command
