@@ -25,7 +25,7 @@ module ToyRobot
     #
     # Examples
     #
-    #   robot.place Position.new(Direction.new(2, 2), :north)
+    #   robot.place Position.new(Coordinate.new(2, 2), :north)
     #
     # Returns nothing.
     # Raises OutOfLimits if coordinates on position are higher then x/y limits.
