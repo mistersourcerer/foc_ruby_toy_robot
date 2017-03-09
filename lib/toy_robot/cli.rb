@@ -1,8 +1,8 @@
 module ToyRobot
   class CLI
-    def initialize(registry: nil)
+    def initialize(registry: ToyRobot::Command::CLIRegistry.new)
       @robot = ToyRobot::Robot.new
-      @registry = registry.nil? ? build_register : registry
+      @registry = registry
     end
 
     def run
@@ -10,12 +10,6 @@ module ToyRobot
         command = @registry.from command
         command.perform @robot
       end
-    end
-
-    def build_register
-      registry = ToyRobot::Command::Registry.new
-      registry.add ToyRobot::Command::Quit.new
-      registry
     end
   end
 end
