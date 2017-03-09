@@ -1,4 +1,4 @@
-describe Command::Report do
+describe ToyRobot::Command::Report do
   let(:robot) { ToyRobot::Robot.new }
   subject(:command) { described_class.new }
 

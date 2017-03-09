@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Command::Place do
+describe ToyRobot::Command::Place do
   let(:robot) { ToyRobot::Robot.new }
   let(:command) { described_class.new }
 
