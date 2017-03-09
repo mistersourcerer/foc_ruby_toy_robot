@@ -25,6 +25,10 @@ module ToyRobot
         :north
       end
 
+      def downcase
+        to_sym
+      end
+
       def ==(other)
         other == :north || other.is_a?(self.class)
       end
@@ -51,6 +55,10 @@ module ToyRobot
 
       def to_sym
         :west
+      end
+
+      def downcase
+        to_sym
       end
 
       def ==(other)
@@ -81,6 +89,10 @@ module ToyRobot
         :east
       end
 
+      def downcase
+        to_sym
+      end
+
       def ==(other)
         other == :east || other.is_a?(self.class)
       end
@@ -107,6 +119,10 @@ module ToyRobot
 
       def to_sym
         :south
+      end
+
+      def downcase
+        to_sym
       end
 
       def ==(other)
