@@ -15,7 +15,6 @@ describe ToyRobot::Command::Registry do
 
   describe "#add" do
     class MyCustomCommand
-      def configure(_); self; end
       def recognize?(command); command == "SUCH_COMMAND" end
       def perform; puts "SO STDOUT" end
     end

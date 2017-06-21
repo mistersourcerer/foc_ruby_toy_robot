@@ -5,7 +5,6 @@ module ToyRobot
         x, y, direction = placement_position.split ","
         coordinate = ToyRobot::Coordinate.new(x, y)
         @position = ToyRobot::Position.new(coordinate, direction)
-        self
       end
 
       def perform(robot)
