@@ -1,7 +1,13 @@
+require "forwardable"
+
 module ToyRobot
   module Command
-    class CLIRegistry < Registry
-      def initialize
+    class CLIRegistry
+      extend Forwardable
+      def_delegators :@registry, :from, :add
+
+      def initialize(registry = Registry.new)
+        @registry = registry
         [
           Place.new,
           Report.new,
@@ -9,7 +15,7 @@ module ToyRobot
           Right.new,
           Left.new,
           Quit.new
-        ].each { |command| add command }
+        ].each { |command| @registry.add command }
       end
     end
   end
